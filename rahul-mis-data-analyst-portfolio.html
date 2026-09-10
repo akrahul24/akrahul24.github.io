@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akula Rahul — MIS & Data Analyst Portfolio</title>
+<style>
+  :root{
+    --bg: #FAFAF8;
+    --panel: #FFFFFF;
+    --border: #E4E2DC;
+    --ink: #2B2B27;
+    --ink-soft: #6B6A62;
+    --ink-dim: #9A988E;
+    --blue: #3B6E8F;
+    --blue-soft: #EAF1F5;
+    --green: #5C7A5E;
+    --green-soft: #EEF3EC;
+    --amber: #A9752F;
+    --amber-soft: #F6EFE3;
+    --purple: #6B5CA5;
+    --purple-soft: #F0EDF8;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.65;
+    font-size:16px;
+  }
+  a{color:var(--blue);}
+  section{max-width:760px; margin:0 auto; padding:64px 24px; scroll-margin-top:70px;}
+
+  h2{
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:24px;
+    color:var(--ink);
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(250,250,248,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+    display:flex; justify-content:center;
+    padding:14px 20px;
+  }
+  nav .inner{
+    max-width:760px; width:100%;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  nav .logo{font-weight:600; font-size:15px;}
+  nav .navlinks{display:flex; gap:22px; font-size:14px;}
+  nav .navlinks a{color:var(--ink-soft); text-decoration:none;}
+  nav .navlinks a:hover{color:var(--blue);}
+  @media(max-width:600px){
+    nav .navlinks{gap:10px; font-size:11.5px;}
+    nav .logo{font-size:13px;}
+    .hero h1{font-size:31px;}
+    .hero{padding-top:48px;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{max-width:760px; margin:0 auto; padding:64px 24px 48px;}
+  .hero .kicker{color:var(--blue); font-weight:600; font-size:14px; margin-bottom:10px;}
+  .hero h1{font-size:40px; font-weight:700; margin-bottom:12px; line-height:1.25;}
+  .hero .role{font-size:16px; color:var(--ink-soft); max-width:560px; margin-bottom:22px;}
+  .hero .contact-row{display:flex; flex-wrap:wrap; gap:10px; font-size:14px;}
+  .hero .contact-row a, .hero .contact-row span{
+    color:var(--ink-soft);
+    border:1px solid var(--border);
+    padding:6px 13px;
+    border-radius:6px;
+    text-decoration:none;
+    background:var(--panel);
+  }
+  .hero .contact-row a:hover{border-color:var(--blue); color:var(--blue);}
+
+  /* ===== ABOUT ===== */
+  .about-text p{color:var(--ink-soft); margin-bottom:14px; max-width:640px;}
+  .strengths{margin-top:22px; display:flex; flex-wrap:wrap; gap:8px;}
+  .strengths span{
+    background:var(--panel);
+    border:1px solid var(--border);
+    padding:6px 13px;
+    border-radius:6px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-row{display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:14px;}
+  .skill-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:16px 18px;
+  }
+  .skill-card .skill-title{font-weight:600; font-size:14.5px; margin-bottom:8px;}
+  .skill-card ul{list-style:none; display:flex; flex-direction:column; gap:5px;}
+  .skill-card li{font-size:13px; color:var(--ink-soft); padding-left:12px; position:relative;}
+  .skill-card li::before{content:"–"; position:absolute; left:0; color:var(--ink-dim);}
+
+  /* ===== EXPERIENCE ===== */
+  .exp-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:22px 24px;
+  }
+  .exp-top{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px; margin-bottom:12px;}
+  .exp-card h3{font-size:16.5px; font-weight:600;}
+  .exp-card .company{color:var(--ink-soft); font-size:13.5px;}
+  .exp-card .dates{font-size:12.5px; color:var(--ink-dim);}
+  .exp-card ul{padding-left:18px; color:var(--ink-soft); font-size:14px; display:flex; flex-direction:column; gap:5px;}
+
+  /* ===== PROJECTS ===== */
+  .project-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:22px 24px;
+    margin-bottom:16px;
+  }
+  .project-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:10px;}
+  .project-head h3{font-size:17px; font-weight:600;}
+  .project-tag{font-size:11.5px; font-weight:600; color:var(--ink-dim);}
+  .project-card p{color:var(--ink-soft); font-size:14px; margin-bottom:12px; max-width:640px;}
+  .kpi-row{display:flex; gap:20px; flex-wrap:wrap; margin-bottom:14px; padding:12px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
+  .kpi-item .kpi-value{font-size:17px; font-weight:700;}
+  .kpi-item .kpi-label{font-size:11px; color:var(--ink-dim);}
+  .project-card ul{padding-left:18px; color:var(--ink-soft); font-size:13.5px; display:flex; flex-direction:column; gap:4px; margin-bottom:14px;}
+  .tools-row{display:flex; flex-wrap:wrap; gap:7px;}
+  .tools-row span{
+    background:var(--blue-soft);
+    color:var(--blue);
+    font-size:11.5px;
+    padding:4px 10px;
+    border-radius:5px;
+    font-weight:500;
+  }
+  .p2 .tools-row span{background:var(--green-soft); color:var(--green);}
+  .p3 .tools-row span{background:var(--amber-soft); color:var(--amber);}
+
+  /* ===== EDUCATION ===== */
+  .edu-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .edu-card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:18px 20px;
+  }
+  .edu-card h4{font-size:14.5px; font-weight:600; margin-bottom:4px;}
+  .edu-card .school{font-size:13px; color:var(--ink-soft); margin-bottom:5px;}
+  .edu-card .dates{font-size:12px; color:var(--ink-dim);}
+  @media(max-width:600px){ .edu-grid{grid-template-columns:1fr;} }
+
+  /* ===== FOOTER ===== */
+  footer{
+    border-top:1px solid var(--border);
+    padding:56px 24px 40px;
+    text-align:center;
+  }
+  footer p{color:var(--ink-soft); max-width:460px; margin:0 auto 22px; font-size:14.5px;}
+  .contact-buttons{display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:30px;}
+  .contact-buttons a{
+    padding:9px 20px;
+    border-radius:6px;
+    font-size:14px;
+    text-decoration:none;
+  }
+  .btn-primary{background:var(--blue); color:#fff;}
+  .btn-secondary{border:1px solid var(--border); color:var(--ink-soft);}
+  .btn-secondary:hover{border-color:var(--blue); color:var(--blue);}
+  footer .fine{font-size:12.5px; color:var(--ink-dim);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="logo">Akula Rahul</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="kicker">MIS & Data Analyst</div>
+  <h1>Hi, I'm Rahul — I turn data into clear reports, dashboards, and business insights.</h1>
+  <div class="role">B.Com graduate with professional experience at Wipro in data annotation and validation, now focused on Excel, SQL, Power BI, MIS reporting, and data analysis.</div>
+  <div class="contact-row">
+    <a href="mailto:akularahul24@gmail.com">akularahul24@gmail.com</a>
+    <a href="tel:8523828058">8523828058</a>
+    <span>Karimnagar, Telangana</span>
+    <a href="https://www.linkedin.com/in/rahul-ak-395050246" target="_blank">LinkedIn</a>
+    <a href="https://github.com/akrahul24" target="_blank">GitHub</a>
+  </div>
+</div>
+
+<section id="about">
+  <h2>About</h2>
+  <div class="about-text">
+    <p>I'm a detail-oriented professional with experience at Wipro, where I worked on data annotation and validation activities for a Google project. The role required accuracy, consistency, productivity tracking, and careful handling of large datasets.</p>
+    <p>I'm now building a career in MIS, reporting, and data analytics through hands-on projects in Excel, SQL, and Power BI. I enjoy cleaning data, finding useful patterns, and presenting results through practical dashboards and reports.</p>
+  </div>
+  <div class="strengths">
+    <span>Data accuracy</span>
+    <span>Analytical thinking</span>
+    <span>Team collaboration</span>
+    <span>Continuous learning</span>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-row">
+    <div class="skill-card">
+      <div class="skill-title">Microsoft Excel</div>
+      <ul>
+        <li>VLOOKUP / INDEX-MATCH</li>
+        <li>Pivot tables & slicers</li>
+        <li>IF, SUMIFS, COUNTIFS, AVERAGEIF</li>
+        <li>Data cleaning</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-title">SQL</div>
+      <ul>
+        <li>Joins & subqueries</li>
+        <li>GROUP BY, ORDER BY, aggregations</li>
+        <li>Filtering, aggregations & data analysis</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-title">Power BI</div>
+      <ul>
+        <li>Interactive dashboards</li>
+        <li>Data modeling & Power Query</li>
+        <li>Basic DAX</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-title">Data Operations</div>
+      <ul>
+        <li>Large-scale data validation</li>
+        <li>Documentation & reporting</li>
+        <li>Google Sheets</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="exp-card">
+    <div class="exp-top">
+      <div>
+        <h3>Associate — Data Annotation & Validation</h3>
+        <div class="company">Wipro Limited</div>
+      </div>
+      <div class="dates">2025 — 2026</div>
+    </div>
+    <ul>
+      <li>Processed and validated large volumes of LiDAR and image datasets with high accuracy</li>
+      <li>Used Microsoft Excel to organize, update, and manage datasets efficiently</li>
+      <li>Maintained documentation and reports for tracking project performance</li>
+      <li>Collaborated with team members to achieve productivity and quality targets</li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="project-card">
+    <div class="project-head">
+      <h3>Sales Analytics Dashboard</h3>
+      <div class="project-tag">Excel + SQL + Power BI</div>
+    </div>
+    <p>Built an end-to-end sales analysis project to track revenue, profit, quantity, customer performance, city performance, and category trends using a cleaned sales dataset.</p>
+    <ul>
+      <li>Cleaned and validated raw sales data, including duplicate and inconsistent records</li>
+      <li>Used Excel formulas, PivotTables, filters, and Power Query for analysis and transformation</li>
+      <li>Used SQL for filtering, grouping, aggregations, and business-focused analysis</li>
+      <li>Built an interactive Power BI dashboard with KPI cards, trends, and category/city analysis</li>
+    </ul>
+    <div class="tools-row"><span>Excel</span><span>SQL</span><span>Power Query</span><span>Power BI</span><span>DAX</span></div>
+  </div>
+
+  <div class="project-card p2">
+    <div class="project-head">
+      <h3>HR Analytics Dashboard</h3>
+      <div class="project-tag">Excel + SQL + Power BI</div>
+    </div>
+    <p>Created an HR analytics dashboard to understand employee headcount, active employees, attrition, departments, education, and workforce trends.</p>
+    <ul>
+      <li>Prepared and cleaned employee data before analysis</li>
+      <li>Calculated HR KPIs including total employees, active employees, and attrition rate</li>
+      <li>Analyzed department, education, age-group, and employee-level trends</li>
+      <li>Built interactive Power BI visuals and filters for management-style reporting</li>
+    </ul>
+    <div class="tools-row"><span>Excel</span><span>SQL</span><span>Power BI</span><span>Data Modeling</span><span>DAX</span></div>
+  </div>
+
+  <div class="project-card p3">
+    <div class="project-head">
+      <h3>Pizza Sales Analysis</h3>
+      <div class="project-tag">SQL + Power BI</div>
+    </div>
+    <p>Analyzed pizza sales data to understand revenue, orders, average order value, product performance, category contribution, and sales trends.</p>
+    <ul>
+      <li>Used SQL queries with GROUP BY, ORDER BY, filtering, and aggregate functions</li>
+      <li>Analyzed daily and monthly order trends</li>
+      <li>Compared sales by pizza category and size</li>
+      <li>Identified top and bottom products by revenue and order volume</li>
+    </ul>
+    <div class="tools-row"><span>SQL</span><span>Power BI</span><span>Aggregations</span><span>Data Visualization</span></div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <h4>B.Com (Computers)</h4>
+      <div class="school">Satavahana University</div>
+      <div class="dates">2018 — 2021</div>
+    </div>
+    <div class="edu-card">
+      <h4>PGDCA</h4>
+      <div class="school">Technical Skill Development Solutions, Hyderabad · Grade: A</div>
+      <div class="dates">2021 — 2022</div>
+    </div>
+    <div class="edu-card">
+      <h4>Intermediate (CEC)</h4>
+      <div class="school">Board of Intermediate Education</div>
+      <div class="dates">2016 — 2018</div>
+    </div>
+    <div class="edu-card">
+      <h4>SSC</h4>
+      <div class="school">Board of Secondary Education</div>
+      <div class="dates">2015 — 2016</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <h2>Get in touch</h2>
+  <p>Open to MIS Executive, MIS Analyst, Reporting Analyst, Operations Analyst, and entry-level Data Analyst opportunities.</p>
+  <div class="contact-buttons">
+    <a class="btn-primary" href="mailto:akularahul24@gmail.com">Email Me</a>
+    <a class="btn-secondary" href="tel:8523828058">Call Me</a>
+    <a class="btn-secondary" href="https://github.com/akrahul24" target="_blank">GitHub</a>
+    <a class="btn-secondary" href="https://www.linkedin.com/in/rahul-ak-395050246" target="_blank">LinkedIn</a>
+  </div>
+  <div class="fine">India · Built with HTML & CSS · © 2026 Rahul</div>
+</footer>
+
+</body>
+</html>
